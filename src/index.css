@@ -1,0 +1,638 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: '#0d0e1b';
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #308505;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control:focus,
+.form-control:active:focus,
+.form-control.active:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #82b440;
+}
+
+.form-select:focus,
+.form-select:active:focus,
+.form-select.active:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-check-input[type=checkbox] {
+  border-radius: 0px !important;
+}
+
+.form-check-input:focus,
+.form-check-input:active:focus,
+.form-check-input.active:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control {
+  border-radius: 0px;
+  border: 1px solid #707070;
+}
+
+.form-select {
+  border-radius: 0px;
+}
+
+input[type=checkbox] {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #555;
+}
+
+input[type=checkbox]:checked {
+  background-color: #82b440;
+  border: 1px solid #82b440;
+}
+
+.img-thumbnail {
+  padding: 0.5px;
+  border-radius: 0px;
+  background-color: #707070;
+}
+
+.text-large {
+  font-size: 1.703rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+.text-l {
+  font-size: 1.3rem;
+}
+
+.text-m {
+  font-size: 1.2rem;
+}
+
+.text-sm {
+  font-size: 1.023rem;
+}
+
+.text-small {
+  font-size: 0.80832rem
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.ls-sm {
+  letter-spacing: 0.2183rem;
+}
+
+.icon .sport_icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.nav-pills .nav-link {
+  color: #82b440;
+  background: transparent;
+  font-size: 1.2703rem;
+  border-radius: 0px;
+  transition: 0.5s ease-out;
+}
+
+.nav-pills .nav-link:hover {
+  font-weight: 600;
+  background: #cfe2ff;
+  /* background: #c1d9fe; */
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  font-weight: 600;
+  background: #82b440;
+  color: #fff;
+}
+
+.green-bg {
+  background: #82b440;
+}
+
+.border_left {
+  border-left: 4px solid #82b440;
+}
+
+.game_box {
+  width: 100%;
+  transition: 0.68s ease-out;
+  border: 2px solid #cecece;
+  cursor: pointer;
+}
+
+.game_box:hover {
+  box-shadow: 1px 1px 5px #cecece;
+  border: 2px solid #82b440;
+}
+
+.button_bg {
+  background: #82b440;
+  color: #fff;
+  border: 2px solid #82b440;
+}
+
+.button_bg:hover {
+  background: transparent;
+  color: #343a40;
+  border: 2px solid #82b440;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #82b440 !important;
+}
+
+.match_section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bg-green {
+  background: #e9e9e9;
+}
+
+.border-green {
+  border: 2px solid #cecece;
+}
+
+.sport_team_logo_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sport_team_logo_box .sport_team_logo {
+  width: 50px;
+  height: 57px;
+}
+
+.logo .team_logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.team_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sport_team_players_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sport_team_players_box .player_box {
+  width: 12vw;
+  height: auto;
+  background: #cecece;
+}
+
+.player_img_box {
+  position: relative;
+  width: 100%;
+  height: 20vh;
+}
+
+.player_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.player_no {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #663399;
+}
+
+.match_details_section {
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.match_details_section .match_details {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.match_details_section .venue_time_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team_logo {
+  width: 120px;
+  height: 150px;
+}
+
+.latest_match_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.latest_match_box .match_box {
+  display: flex;
+  align-items: center;
+}
+
+.latest_match_box .vs_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #555;
+}
+
+.latest_match_box .team {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hr_box {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.team_hr {
+  width: 100px;
+  height: 1.2px;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.latest_match_box .team .team_logo {
+  width: 75px;
+  height: 80px;
+}
+
+/* Owl Carousel Section */
+.matches_box {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.65) 80%, rgba(0, 0, 0, 0.65) 75%), url('https://cdn.pixabay.com/photo/2017/12/17/12/45/football-3024154__340.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+
+.match_team_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match_team_box .match_data {
+  display: flex;
+  align-items: center;
+}
+
+.match_team_box .match_data .match_schedule {
+  width: 100%;
+}
+
+.match_team_box .match_data .logo_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match_team_box .match_data .match_schedule .logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match_team_box .vs_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.stats_team_box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.stats_team_logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: #cecece;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid #343a40;
+}
+
+.carousel-control-next-icon:after {
+  content: '›';
+  font-size: 2rem;
+  color: #343a40;
+}
+
+.carousel-control-prev-icon:after {
+  content: '‹';
+  font-size: 2rem;
+  color: #343a40;
+}
+
+@media (max-width: 768px) {
+  .team_logo {
+    width: 100px;
+    height: 130px;
+  }
+
+  .team1 {
+    flex-wrap: wrap;
+    /* flex-direction: column-reverse; */
+  }
+
+  .team2 {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 478px) {
+  .team1 {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  .team2 {
+    flex-wrap: wrap;
+  }
+}
+
+/*  */
+.login {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.login .login-form {
+  width: 50rem;
+}
+
+.login .login-form p {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.login .login-form input {
+  background: transparent;
+  width: 15rem;
+  border: 1px solid lightgray;
+}
+
+.social-icon h6 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-google {
+  color: #0F9D58;
+}
+
+.fa-facebook {
+  color: #4285F4;
+}
+
+.fa-instagram {
+  color: #DB4437;
+}
+
+.fa-google:hover {
+  transform: scale(1.2);
+  transition: .3s ease-in-out;
+}
+
+.fa-facebook:hover {
+  transform: scale(1.2);
+  transition: .3s ease-in-out;
+}
+
+.fa-instagram:hover {
+  transform: scale(1.2);
+  transition: .3s ease-in-out;
+}
+/*  */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Open Sans:400,600,800');
+
+.profile-card-4 {
+    max-width: 390px;
+    background-color: #FFF;
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.profile-card-4 img {
+    transition: all 0.25s linear;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.profile-card-4 .profile-content {
+    position: relative;
+    padding: 15px;
+    background-color: #FFF;
+}
+
+.profile-card-4 .profile-name {
+    font-weight: bold;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: -70px;
+    color: #FFF;
+    font-size: 17px;
+}
+
+.profile-card-4 .profile-name p {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+
+.profile-card-4 .profile-description {
+    color: #777;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.profile-card-4 .profile-overview {
+    padding: 15px 0px;
+}
+
+.profile-card-4 .profile-overview p {
+    font-size: 10px;
+    font-weight: 600;
+    color: #777;
+}
+
+.profile-card-4 .profile-overview h4 {
+    color: #273751;
+    font-weight: bold;
+}
+
+.profile-card-4 .profile-content::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    top: -10px;
+    left: 0px;
+    right: 0px;
+    background-color: #FFF;
+    z-index: 0;
+    transform: skewY(3deg);
+}
+
+.profile-card-4:hover img {
+    transform: rotate(5deg) scale(1.1, 1.1);
+    filter: brightness(110%);
+}

@@ -1,0 +1,54 @@
+.collections {
+    width: 95%;
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+    padding-left: 5px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.gallery {
+    height: 250px;
+    width: 350px;
+
+}
+
+.gallery img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mainSlider {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-height: 80vh;
+    transition: 3s ease-in-out;
+}
+
+.iconCross {
+    position: absolute;
+    top: 2%;
+    z-index: 1000;
+    right: 2%;
+}
+
+@media screen and (max-width:600px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gallery {
+        margin-top: 30px;
+    }
+    .mainSlider{
+        display: none;
+    }
+}

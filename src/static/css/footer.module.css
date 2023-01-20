@@ -1,0 +1,28 @@
+.first {
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--title-color);
+    background: rgba(144, 185, 86, .15);
+    border: 1px solid;
+    border-color: rgba(34, 34, 34, .15);
+    padding: 12px 30px;
+    display: inline-block;
+    letter-spacing: .3em;
+}
+
+.btn {
+    position: relative;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: .03em;
+    text-transform: capitalize;
+    color: var(--scondary-color1);
+    padding: 14px 50px;
+    display: inline-block;
+    border: 1px solid #90b956;
+}
+
+.button {
+    position: relative;
+}
