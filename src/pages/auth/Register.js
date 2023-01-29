@@ -32,11 +32,11 @@ const Register = () => {
                 }, 2000)
                 toast.warning('Please all the fields!!', { position: toast.POSITION.TOP_RIGHT })
             }
-            else if (formData.password.length < 6) {
+            else if (formData.password.length < 8) {
                 setTimeout(() => {
                     setLoading(false)
                 }, 2000)
-                toast.warning('Password must be more than 6 character!!', { position: toast.POSITION.TOP_RIGHT })
+                toast.warning('Password must be more than 8 character!!', { position: toast.POSITION.TOP_RIGHT })
             }
             else if (formData.password !== formData.checkpassword) {
                 setTimeout(() => {
@@ -45,7 +45,13 @@ const Register = () => {
                 toast.warning('Password not match!!', { position: toast.POSITION.TOP_RIGHT })
             }
             else {
-                const res = await axios.post('http://localhost:5000/api/register', formData)
+                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(formData.password)){
+                    toast.warning('Password contain at least one special character!!', { position: toast.POSITION.TOP_RIGHT })
+                    setTimeout(() => {
+                        setLoading(false)
+                    }, 2000)
+                }else{
+                    const res = await axios.post('http://localhost:5000/api/register', formData)
                 console.log('check')
                 console.log(res.status)
                 if (res.data) {
@@ -54,6 +60,7 @@ const Register = () => {
                     }, 2000)
                     toast.success('User Register Sucessfully', { position: toast.POSITION.TOP_RIGHT })
                     window.location = "/login"
+                }
                 }
             }
         } catch (error) {

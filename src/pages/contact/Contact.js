@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
-import img from '../../assets/section-title-vector.svg';
 import { toast } from 'react-toastify';
 export const Contact = () => {
     const [formdata, setFormdata] = useState({
@@ -12,15 +11,20 @@ export const Contact = () => {
     const onInputChange = (e) => {
         setFormdata({ ...formdata, [e.target.name]: e.target.value || e.target.files[0] });
     };
-    const postFeedback = async () => {
+    const postFeedback = async (e) => {
+        e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/post-contact', formdata)
-            toast.success("Contact has been posted")
+            if (/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(formdata.email)) {
+                const res = await axios.post('http://localhost:5000/api/post-contact', formdata)
+                toast.success("Contact has been posted")
+            } else {
+                toast.warn("Please use valid email!!")
+            }
         } catch (error) {
             toast.error("Someting went wrong")
         }
     }
-  
+
     return (
         <>
             <Navbar />
@@ -31,11 +35,7 @@ export const Contact = () => {
                             <div className="asking-form-wrap">
                                 <div className="section-title1 my-5 sibling2 d-flex justify-content-center flex-column">
                                     <h2 className='text-center '>Feel Free To Ask</h2>
-                                    <img
-                                        className='mx-auto'
-                                        src={img}
-                                        alt="image"
-                                    />
+
                                 </div>
                                 <form className="style-1">
                                     <div className="row g-5">
