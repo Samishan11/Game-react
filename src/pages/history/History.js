@@ -106,13 +106,13 @@ const History = () => {
                         <div className="d-flex justify-content-start align-items-center me-4">
                           <i className="fa fa-calendar text-small me-2"></i>
                           <p className="text-dark mb-0 text-small">
-                            December 20, 2022
+                           {new Date(sportData?.eventStartDate).toDateString()}
                           </p>
                         </div>
                         <div className="d-flex justify-content-start align-items-center">
                           <i className="fa fa-map-marker text-small me-2"></i>
                           <p className="text-dark mb-0 text-small">
-                            Goku Stadium
+                            {sportData?.eventPlace}
                           </p>
                         </div>
                       </div>

@@ -357,19 +357,19 @@ const Content = () => {
                             </div>
                             <div className="text-center mb-2">
                               <h6 className="text-secondary text-sm mb-2">
-                                Fifa World Cup
+                                {data?.eventName}
                               </h6>
                               <div className="d-flex justify-content-center align-items-center">
                                 <div className="d-flex justify-content-start align-items-center me-4">
                                   <i className="fa fa-calendar text-small me-2"></i>
                                   <p className="text-dark mb-0 text-small">
-                                    December 20, 2022
+                                    {new Date(data?.eventStartDate)?.toDateString()}
                                   </p>
                                 </div>
                                 <div className="d-flex justify-content-start align-items-center">
                                   <i className="fa fa-map-marker text-small me-2"></i>
                                   <p className="text-dark mb-0 text-small">
-                                    Goku Stadium
+                                    {data.eventPlace}
                                   </p>
                                 </div>
                               </div>
@@ -426,19 +426,19 @@ const Content = () => {
                         </div>
                         <div className="text-center mb-2">
                           <h6 className="text-secondary text-sm mb-2">
-                            Fifa World Cup
+                            {data?.eventName}
                           </h6>
                           <div className="d-flex justify-content-center align-items-center">
                             <div className="d-flex justify-content-start align-items-center me-4">
                               <i className="fa fa-calendar text-small me-2"></i>
                               <p className="text-dark mb-0 text-small">
-                                December 20, 2022
+                                {new Date(data?.eventStartDate)?.toDateString()}
                               </p>
                             </div>
                             <div className="d-flex justify-content-start align-items-center">
                               <i className="fa fa-map-marker text-small me-2"></i>
                               <p className="text-dark mb-0 text-small">
-                                Goku Stadium
+                                {data.eventPlace}
                               </p>
                             </div>
                           </div>
@@ -616,19 +616,19 @@ const Content = () => {
                     </div>
                     <div className="text-center mb-2">
                       <h6 className="text-secondary text-sm mb-lg-2 mb-md-3">
-                        Fifa World Cup
+                        {data?.eventName}
                       </h6>
                       <div className="d-flex justify-content-center align-items-center flex-wrap">
                         <div className="d-flex justify-content-start align-items-center me-4">
                           <i className="fa fa-calendar text-small me-2"></i>
                           <p className="text-dark mb-0 text-small">
-                            December 20, 2022
+                            {new Date(data?.eventStartDate)?.toDateString()}
                           </p>
                         </div>
                         <div className="d-flex justify-content-start align-items-center">
                           <i className="fa fa-map-marker text-small me-2"></i>
                           <p className="text-dark mb-0 text-small">
-                            Goku Stadium
+                            {data.eventPlace}
                           </p>
                         </div>
                       </div>

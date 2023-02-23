@@ -23,6 +23,7 @@ import Resetpassword from './pages/forgot-password/Reset-password';
 import Verify from './pages/verify/Verify';
 import { NewsProvider } from './context/newsContext';
 import News from './pages/news/News';
+import Profile from './pages/Profile';
 function App() {
   return (
     <TeamProvider >
@@ -33,6 +34,7 @@ function App() {
               <Routes>
                 <Route path='/' caseSensitive={false} element={<Home />} />
                 <Route path='/login' caseSensitive={false} element={<Login />} />
+                <Route path='/profile' caseSensitive={false} element={<Profile />} />
                 <Route path='/register' caseSensitive={false} element={<Register />} />
                 <Route path='/contact' caseSensitive={false} element={<Contact />} />
                 <Route path='/standing' caseSensitive={false} element={<Standing />} />
@@ -43,9 +45,9 @@ function App() {
                 <Route path='/forgot-password' caseSensitive={false} element={<Forgotpassword />} />
                 <Route path='/reset-password/:token' caseSensitive={false} element={<Resetpassword />} />
                 <Route path='/verify-email/:token' caseSensitive={false} element={<Verify />} />
+                  <Route path='/history' caseSensitive={false} element={<History />} />
                 <Route element={<ProtectedAdmin />}>
                   <Route exact path='/admin-dashboard' element={<Dashboard></Dashboard>}></Route>
-                  <Route path='/history' caseSensitive={false} element={<History />} />
                 </Route>
                 <Route path='*' element={<Pagenotfound></Pagenotfound>}></Route>
               </Routes>

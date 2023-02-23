@@ -73,7 +73,10 @@ const Dashboard = () => {
                         setManagenews(false)
                         setManagecontact(false)
                     }} to="#" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i className="fas fa-gift me-2" />Manage User</Link>
-                    <Link to="#" className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i className="fas fa-power-off me-2" />Logout</Link>
+                    <button onClick={() => {
+                        localStorage.clear()
+                        window.location = '/login'
+                    }} className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i className="fas fa-power-off me-2" />Logout</button>
                 </div>
             </div>
             {/* /#sidebar-wrapper */}

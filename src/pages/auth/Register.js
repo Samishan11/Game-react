@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import KhaltiCheckout from "khalti-checkout-web";
 
 
 const Register = () => {
@@ -11,7 +12,8 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
-        checkpassword: ""
+        checkpassword: "",
+        amount: ""
     })
 
     const onInputChange = (e) => {
@@ -20,7 +22,38 @@ const Register = () => {
 
     const [loading, setLoading] = useState(false)
 
+    let myKey = {
+        publicTestKey: "test_public_key_881f535efbb040ee885f85e52aff77aa",
+        secretKey: "test_secret_key_0d850f6c660b4390a445b1e46c7d2da6",
+    };
 
+    let config = {
+        publicKey: myKey.publicTestKey,
+        productIdentity: '12345',
+        productName: 'sss',
+        productUrl: "http://localhost:3000/view-details/",
+        eventHandler: {
+            onSuccess(payload) {
+                setFormData({ ...formData, amount: '100' });
+                console.log(formData)
+            },
+            onError(error) {
+                console.log(error);
+            },
+            onClose() {
+                console.log("widget is closing");
+            },
+        },
+        paymentPreference: [
+            "KHALTI",
+            "EBANKING",
+            "MOBILE_BANKING",
+            "CONNECT_IPS",
+            "SCT",
+        ],
+    };
+
+    let checkout = new KhaltiCheckout(config);
 
     const registerUser = async (e) => {
         try {
@@ -45,22 +78,29 @@ const Register = () => {
                 toast.warning('Password not match!!', { position: toast.POSITION.TOP_RIGHT })
             }
             else {
-                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(formData.password)){
+                if (!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(formData.password)) {
                     toast.warning('Password contain at least one special character!!', { position: toast.POSITION.TOP_RIGHT })
                     setTimeout(() => {
                         setLoading(false)
                     }, 2000)
-                }else{
-                    const res = await axios.post('http://localhost:5000/api/register', formData)
-                console.log('check')
-                console.log(res.status)
-                if (res.data) {
-                    setTimeout(() => {
-                        setLoading(false)
-                    }, 2000)
-                    toast.success('User Register Sucessfully', { position: toast.POSITION.TOP_RIGHT })
-                    window.location = "/login"
-                }
+                } else {
+                    if (!formData.amount) {
+                        toast.warning('Please load the amount to register!!', { position: toast.POSITION.TOP_RIGHT })
+                        setTimeout(() => {
+                            setLoading(false)
+                        }, 2000)
+                    } else {
+                        const res = await axios.post('http://localhost:5000/api/register', formData)
+                        console.log('check')
+                        console.log(res.status)
+                        if (res.data) {
+                            setTimeout(() => {
+                                setLoading(false)
+                            }, 2000)
+                            toast.success('User Register Sucessfully', { position: toast.POSITION.TOP_RIGHT })
+                            window.location = "/login"
+                        }
+                    }
                 }
             }
         } catch (error) {
@@ -159,6 +199,22 @@ const Register = () => {
                                 />
                             </div>
                         </div>
+                        <div className='mb-2'>
+                            <label
+                                className="fw-bold"
+                                htmlFor=""
+                                style={{ fontSize: "0.8em" }}
+                            >
+                                Load Amount
+                            </label>
+                            <button
+                                type="button"
+                                onClick={() => checkout.show({ amount: 1000 })}
+                                className="btn btn-outline-primary w-100"
+                            >
+                                Khalti
+                            </button>
+                        </div>
                         <div className="form-group my-4">
                             <label
                                 className="fw-bold"
@@ -198,6 +254,7 @@ const Register = () => {
                                 <Link to={`/reset-password-link`} className="nav-link m-0 px-0 text-sm">Forgot Password?</Link>
                             </div>
                         </div>
+
                         <div>
                             <button
                                 type="button"

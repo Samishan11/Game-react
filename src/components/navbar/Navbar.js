@@ -78,6 +78,12 @@ const Navbar = () => {
                 <div className={`${Style.startProject} ${active}`}>
                     {
                         token ?
+                            <>
+                            <li className={`me-3 }`}>
+                                <Link to='/profile' className='btn btn-outline-dark rounded-cricle d-flex justify-content-center' smooth={true} style={{ 'textDecoration': 'none' , width:'30px', height:'30px' , borderRadius:'50%' }}>
+                                    <i className='fas fa-user'></i>
+                                </Link>
+                            </li>
                             <li className={`me-3 }`}>
                                 <button onClick={() => {
                                     localStorage.clear()
@@ -86,6 +92,7 @@ const Navbar = () => {
                                     Logout
                                 </button>
                             </li>
+                            </>
                             :
                             <>
                                 <li className={`me-3 ${Style.startProjectButtonoutline}`}>

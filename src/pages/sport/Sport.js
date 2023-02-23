@@ -42,43 +42,43 @@ const Sport = () => {
     team: '',
     image: '',
     catagory: ''
-})
-const [image, setImage] = useState('')
+  })
+  const [image, setImage] = useState('')
   const onInputChange = (e) => {
     setFormdata({ ...formdata, [e.target.name]: e.target.value || e.target.files[0] });
-};
+  };
 
-const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-const addTeam = async (e) => {
+  const addTeam = async (e) => {
     e.preventDefault()
     const fd = new FormData();
     fd.append("team", formdata.team)
     fd.append("catagory", formdata.catagory)
     fd.append("image", image)
     try {
-        if (!formdata.team || !formdata.catagory || !image) {
-            setLoading(true)
-            setTimeout(() => {
-                setLoading(false)
-                toast.error('Please fill all fields!!!', { position: toast.POSITION.TOP_RIGHT })
-            }, 2000)
-        } else {
-            const res = await axios.post('http://localhost:5000/api/post-team', fd)
-            setLoading(true)
-            setTimeout(() => {
-                setLoading(false)
-                toast.success('Team Created Sucessfully', { position: toast.POSITION.TOP_RIGHT })
-            }, 2000)
-        }
-    } catch (error) {
+      if (!formdata.team || !formdata.catagory || !image) {
         setLoading(true)
         setTimeout(() => {
-            setLoading(false)
-            toast.error('Something went wrong', { position: toast.POSITION.TOP_RIGHT })
+          setLoading(false)
+          toast.error('Please fill all fields!!!', { position: toast.POSITION.TOP_RIGHT })
         }, 2000)
+      } else {
+        const res = await axios.post('http://localhost:5000/api/post-team', fd)
+        setLoading(true)
+        setTimeout(() => {
+          setLoading(false)
+          toast.success('Team Created Sucessfully', { position: toast.POSITION.TOP_RIGHT })
+        }, 2000)
+      }
+    } catch (error) {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        toast.error('Something went wrong', { position: toast.POSITION.TOP_RIGHT })
+      }, 2000)
     }
-}
+  }
 
 
   return (
@@ -88,7 +88,7 @@ const addTeam = async (e) => {
         <div className="col">
           {
             userAuthToken?.data &&
-          <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='btn btn-outline-dark mb-5'>Create your own team and participate</button>
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='btn btn-outline-dark mb-5'>Create your own team and participate</button>
           }
           <h3 className="fs-4 mb-3">Recent Teams</h3>
         </div>
@@ -142,85 +142,85 @@ const addTeam = async (e) => {
             </div>
           </div> */}
           {
-          sport?.length > 0 ?
-          sports?.map((data, ind) => {
-            return (
-              <div className="col-lg-6 mb-4">
-                <div className="carouse text-dark bg-light shadow">
-                  {/*  */}
-                  <div className="match_team_box mb-2">
-                    <div className="match_data">
-                      <div className="match_schedule text-center me-5 py-3">
-                        <div className="logo_section mb-3">
-                          <img
-                            src={`http://localhost:5000/${data?.team1Image}`}
-                            alt=""
-                            style={{
-                              width: "100px",
-                              objectFit: "cover",
-                              height: "100px",
-                            }}
-                            className="logo"
-                            width={200}
-                          />
+            sport?.length > 0 ?
+              sports?.map((data, ind) => {
+                return (
+                  <div className="col-lg-6 mb-4">
+                    <div className="carouse text-dark bg-light shadow">
+                      {/*  */}
+                      <div className="match_team_box mb-2">
+                        <div className="match_data">
+                          <div className="match_schedule text-center me-5 py-3">
+                            <div className="logo_section mb-3">
+                              <img
+                                src={`http://localhost:5000/${data?.team1Image}`}
+                                alt=""
+                                style={{
+                                  width: "100px",
+                                  objectFit: "cover",
+                                  height: "100px",
+                                }}
+                                className="logo"
+                                width={200}
+                              />
+                            </div>
+                            <h6 className="text-dark">{data?.team1}</h6>
+                          </div>
+                          <div className="vs_box">
+                            <h6 className="text-dark text-uppercase text-l">VS</h6>
+                          </div>
+                          <div className="match_schedule text-center ms-5 py-3">
+                            <div className="logo_section mb-3">
+                              <img
+                                src={`http://localhost:5000/${data?.team2Image}`}
+                                className="logo"
+                                style={{
+                                  width: "100px",
+                                  objectFit: "cover",
+                                  height: "100px",
+                                }}
+                                width={200}
+                              />
+                            </div>
+                            <h6 className="text-dark">{data?.team2}</h6>
+                          </div>
                         </div>
-                        <h6 className="text-dark">{data?.team1}</h6>
                       </div>
-                      <div className="vs_box">
-                        <h6 className="text-dark text-uppercase text-l">VS</h6>
-                      </div>
-                      <div className="match_schedule text-center ms-5 py-3">
-                        <div className="logo_section mb-3">
-                          <img
-                            src={`http://localhost:5000/${data?.team2Image}`}
-                            className="logo"
-                            style={{
-                              width: "100px",
-                              objectFit: "cover",
-                              height: "100px",
-                            }}
-                            width={200}
-                          />
+                      <div className="text-center mb-2">
+                        <h6 className="text-dark text-sm mb-2"> {data?.eventName}</h6>
+
+                        <div className="d-flex justify-content-center align-items-center">
+                          <div className="d-flex justify-content-start align-items-center me-4">
+                            <i className="fa fa-calendar text-small me-2"></i>
+                            <p className="text-dark mb-0 text-small">
+                              {new Date(data?.eventStartDate)?.toDateString()}
+                            </p>
+                          </div>
+                          <div className="d-flex justify-content-start align-items-center">
+                            <i className="fa fa-map-marker text-small me-2"></i>
+                            <p className="text-dark mb-0 text-small">
+                              {data.eventPlace}
+                            </p>
+                          </div>
                         </div>
-                        <h6 className="text-dark">{data?.team2}</h6>
+                      </div>
+                      <div className="d-flex justify-content-center align-items-center mt-3 mb-2">
+                        <Link
+                          state={{ data: data }}
+                          to={`/detail/${data?._id}`}
+                          className="btn button_bg px-4 my-4"
+                        >
+                          View Details
+                        </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="text-center mb-2">
-                    <h6 className="text-dark text-sm mb-2">Fifa World Cup</h6>
+                );
+              }) :
 
-                    <div className="d-flex justify-content-center align-items-center">
-                      <div className="d-flex justify-content-start align-items-center me-4">
-                        <i className="fa fa-calendar text-small me-2"></i>
-                        <p className="text-dark mb-0 text-small">
-                          December 20, 2022
-                        </p>
-                      </div>
-                      <div className="d-flex justify-content-start align-items-center">
-                        <i className="fa fa-map-marker text-small me-2"></i>
-                        <p className="text-dark mb-0 text-small">
-                          Goku Stadium
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-center align-items-center mt-3 mb-2">
-                    <Link
-                      state={{ data: data }}
-                      to={`/detail/${data?._id}`}
-                      className="btn button_bg px-4 my-4"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          }) :
+              <Loading />
 
-          <Loading />
-        
-        }
+          }
         </div>
         <div className="container d-flex justify-content-center align-items-center">
           {sport?.length !== sports?.length ? (
@@ -236,53 +236,53 @@ const addTeam = async (e) => {
         </div>
       </div>
       <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title" id="exampleModalLabel">Add Team</h1>
-                            <button type="button" className="btn-close text-danger fas fa-times" data-bs-dismiss="modal" aria-label="Close" ></button>
-                        </div>
-                        <form id='contact-form' onSubmit={addTeam} style={{ fontSize: '1rem' }} className="container validate-form">
-                            <div className="modal-body">
-                                <div className='container  pb-5'>
-                                    <div className="container bg-white d-block mx-auto">
-                                        <div className="row">
-                                            <div className="col-12 col-md-12">
-                                                <div className="form-group">
-                                                    <label htmlFor="exampleInputEmail1">Team Name</label>
-                                                    <input onChange={e => onInputChange(e)} name='team' type="text" className="form-control input100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter teamname" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="form-group my-3">
-                                            <label htmlFor="exampleInputEmail1">catagory*</label>
-                                            <select name='catagory' onChange={e => onInputChange(e)} class="form-select form-control input100" aria-label="Default select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="football">Football</option>
-                                                <option value="cricket">Cricket</option>
-                                                <option value="tabletennis">Table Tennis</option>
-                                                <option value="footsal">Footsal</option>
-                                                <option value="vollyball">Vollyball</option>
-                                            </select>
-                                        </div>
-                                        <div className="form-group my-3">
-                                            <label htmlFor="exampleInputEmail1">Team Image*</label>
-                                            <input name='image' onChange={e => setImage(e.target.files[0])} type="file" className="form-control input100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Team1 image" />
-                                        </div>
-                                    </div>
-                                    {
-                                        loading && <Loading />
-                                    }
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-                                <button type="sumbit" className="btn btn-outline-primary">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title" id="exampleModalLabel">Add Team</h1>
+              <button type="button" className="btn-close text-danger fas fa-times" data-bs-dismiss="modal" aria-label="Close" ></button>
             </div>
+            <form id='contact-form' onSubmit={addTeam} style={{ fontSize: '1rem' }} className="container validate-form">
+              <div className="modal-body">
+                <div className='container  pb-5'>
+                  <div className="container bg-white d-block mx-auto">
+                    <div className="row">
+                      <div className="col-12 col-md-12">
+                        <div className="form-group">
+                          <label htmlFor="exampleInputEmail1">Team Name</label>
+                          <input onChange={e => onInputChange(e)} name='team' type="text" className="form-control input100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter teamname" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="form-group my-3">
+                      <label htmlFor="exampleInputEmail1">catagory*</label>
+                      <select name='catagory' onChange={e => onInputChange(e)} class="form-select form-control input100" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="football">Football</option>
+                        <option value="cricket">Cricket</option>
+                        <option value="tabletennis">Table Tennis</option>
+                        <option value="footsal">Footsal</option>
+                        <option value="vollyball">Vollyball</option>
+                      </select>
+                    </div>
+                    <div className="form-group my-3">
+                      <label htmlFor="exampleInputEmail1">Team Image*</label>
+                      <input name='image' onChange={e => setImage(e.target.files[0])} type="file" className="form-control input100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Team1 image" />
+                    </div>
+                  </div>
+                  {
+                    loading && <Loading />
+                  }
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                <button type="sumbit" className="btn btn-outline-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

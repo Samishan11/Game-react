@@ -68,7 +68,6 @@ const Dashboardcontent = () => {
                             {sport?.map((data, ind) => {
                                 return (
                                     <tr key={ind + 1}>
-                                        <th scope="row">{1}</th>
                                         <td>{data.eventName}</td>
                                         <td>{data.team1}</td>
                                         <td>{data.team2}</td>

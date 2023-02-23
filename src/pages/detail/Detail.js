@@ -179,7 +179,34 @@ const Detail = () => {
                                         }} />
                                 </div>
                                 <div className="vs_box mx-lg-5 mx-3">
-                                    <h6 className="text-dark text-uppercase h1 ls-sm"><Countdown date={Date.now() + Math.floor(new Date(data?.eventStartDate)?.getTime() / 100000)} /></h6>
+                                    {
+                                        data.result ?
+                                        <>
+                                            <div className="today_match_section py-3">
+                                                <div className="px-2 py-1">
+                                                    <div className="d-flex justify-content-center align-itmes-center flex-column text-center mb-0">
+                                                        <h4 className="text-dark text-xl mb-0 fw600 ls-sm">
+                                                            {
+                                                                data?.finalResult?.team1finalresult
+                                                                    ?.totalgoal1
+                                                            }
+                                                            <i class="fas text-sm fa-swords text-warning mx-3"></i>
+                                                            {
+                                                                data?.finalResult?.team2finalresult
+                                                                    ?.totalgoal2
+                                                            }
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <small className="text-dark text-uppercase h6 ls-sm">{new Date(data?.eventStartDate).toDateString()} {new Date(data?.eventStartDate).toLocaleTimeString()}</small>
+
+                                        </>
+
+                                            :
+                                            <h6 className="text-dark text-uppercase h1 ls-sm"><Countdown date={Date.now() + Math.floor(new Date(data?.eventStartDate)?.getTime() / 100000)} /></h6>
+
+                                    }
                                 </div>
                                 <div className="team2">
                                     <img
@@ -210,44 +237,62 @@ const Detail = () => {
                                         <thead className='text-dark'>
                                             <tr>
                                                 <th scope="col">
-                                                    <div class="py-2 px-3 text-uppercase text-sm fw-bold">Player Name</div>
+                                                    <div class="py-2 px-3 text-uppercase text-sm fw-bold">{ddata?.team1}
+                                                        <img width={25} src={`http://localhost:5000/${ddata?.team1Image}`} className='mx-3' />
+
+                                                    </div>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody className='bg-light mb-0'>
                                             {
                                                 filterParticipateTeam1?.map((data, ind) => {
+
                                                     return (
+
+                                                        <tr>
+                                                            <td class="align-middle d-inline">
+                                                                <div class="py-1 px-3  text-sm fw-bold">{data?.participation?.user}
+                                                                    <span>-{data?.participation?.role}</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                    {
+                                        filterParticipateTeam2?.map((data, ind) => {
+                                            return (
+                                                <table class="table table-bordered mb-0">
+                                                    <thead className='text-dark'>
+                                                        <tr>
+                                                            <th scope="col">
+                                                                <div class="py-2 px-3 text-uppercase text-sm fw-bold">{ddata?.team2}
+                                                                    <img width={25} src={`http://localhost:5000/${ddata?.team2Image}`} className='mx-3' />
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody className='bg-light mb-0'>
                                                         <>
                                                             <tr>
                                                                 <td class="align-middle d-inline">
                                                                     <div class="py-1 px-3  text-sm fw-bold">{data?.participation?.user}
-                                                                        <img width={50} src={`http://localhost:5000/${ddata?.team1Image}`} className='mx-3' />
                                                                         <span>-{data?.participation?.role}</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
 
                                                         </>
-                                                    )
-                                                })
-                                            }
-                                            {
-                                                filterParticipateTeam2?.map((data, ind) => {
-                                                    return (
-                                                        <tr>
-                                                            <td class="align-middle">
-                                                                <div class="py-1 px-3 text-sm fw-bold">{data?.participation?.user}
-                                                                    <img width={50} src={`http://localhost:5000/${ddata?.team2Image}`} className='mx-3' />
-                                                                    <span>-{data?.participation?.role}</span>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            }
-                                        </tbody>
-                                    </table>
+                                                    </tbody>
+                                                </table>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </>
                         }
@@ -288,7 +333,7 @@ const Detail = () => {
                                                     <div class="py-1 px-3 text-sm fw-bold">{data.eventName}</div>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <div class="py-1 px-3 text-sm fw-bold">2022</div>
+                                                    <div class="py-1 px-3 text-sm fw-bold">2023</div>
                                                 </td>
                                             </tr>
                                         </tbody>
